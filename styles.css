@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Juego</title>
+</head>
+<body>
+
+<div id="startMenu">
+    <div>
+        <h1>¡Bienvenido al juego!</h1>
+        <p id="scoreMessage"></p>
+        <button onclick="showGame()">Iniciar Juego</button>
+    </div>
+</div>
+
+<div id="gameContainer">
+    <div id="scoreBoard">Puntuación: 0</div>
+    <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()" ontouchend="clearmove()">UP</button><br><br>
+    <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()" ontouchend="clearmove()">LEFT</button>
+    <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()" ontouchend="clearmove()">RIGHT</button><br><br>
+    <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()" ontouchend="clearmove()">DOWN</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
