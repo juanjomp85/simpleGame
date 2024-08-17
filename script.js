@@ -117,7 +117,7 @@ function updateGameArea() {
         // Comprobar si el jugador ha sorteado una pared (cuando pasa el borde izquierdo del obstáculo)
         if (myObstacles[i].x + myObstacles[i].width < myGamePiece.x && !myObstacles[i].passed) {
             myObstacles[i].passed = true;  // Marca la pared como sorteada
-            score += 100;  // Aumenta la puntuación
+            score += 50;  // Aumenta la puntuación
             updateScore();  // Actualiza la puntuación en pantalla
             updateBackground();  // Verificar y actualizar el fondo
             checkDifficultyIncrease();  // Verificar si se debe aumentar la dificultad
