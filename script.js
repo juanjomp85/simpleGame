@@ -77,16 +77,34 @@ function component(width, height, color, x, y) {
     this.speedY = 0;    
     this.x = x;
     this.y = y;    
-    this.passed = false;  // Añadimos un atributo "passed" para verificar si la pared fue sorteada
+    this.passed = false;
+    
     this.update = function() {
         ctx = myGameArea.context;
         ctx.fillStyle = color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
+    
     this.newPos = function() {
+        // Calcular nueva posición
         this.x += this.speedX;
-        this.y += this.speedY;        
-    }    
+        this.y += this.speedY;
+        
+        // Limitar movimiento en los bordes del canvas
+        if (this.x < 0) {  // Límite izquierdo
+            this.x = 0;
+        }
+        if (this.x + this.width > myGameArea.canvas.width) {  // Límite derecho
+            this.x = myGameArea.canvas.width - this.width;
+        }
+        if (this.y < 0) {  // Límite superior
+            this.y = 0;
+        }
+        if (this.y + this.height > myGameArea.canvas.height) {  // Límite inferior
+            this.y = myGameArea.canvas.height - this.height;
+        }
+    }
+
     this.crashWith = function(otherobj) {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -103,6 +121,7 @@ function component(width, height, color, x, y) {
         return crash;
     }
 }
+
 
 function updateGameArea() {
     if (crashed) return;
