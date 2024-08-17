@@ -28,6 +28,7 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid #d3d3d3;
+    border-radius: 12px;
     flex-direction: column;
 }
 
@@ -53,4 +54,5 @@ canvas {
     padding: 10px 20px;
     font-size: 20px;
     cursor: pointer;
+    border-radius: 8px;
 }
