@@ -17,7 +17,7 @@ canvas {
 
 #startMenu {
     width: 480px;
-    height: 270px;
+    height: 320px;
     background-color: #333;
     color: white;
     display: flex;
