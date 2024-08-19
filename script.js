@@ -18,7 +18,7 @@ function goToMenu() {
     document.getElementById('startMenu').style.display = 'flex';
     
     // Mostrar la puntuación final
-    document.getElementById('scoreMessage').innerText = "Puntuación final: " + score + " puntos";
+    document.getElementById('scoreMessage').innerText = "Última puntuación: " + score + " puntos";
     
     // Actualizar la puntuación más alta si es necesario
     if (score > previousHighScore) {
@@ -228,3 +228,70 @@ function checkDifficultyIncrease() {
         myGameArea.adjustSpeed(gameSpeed);
     }
 }
+
+// Guardar la puntuación más alta en LocalStorage
+function saveHighScore(score) {
+    // Verificar si existe una puntuación más alta almacenada
+    var storedHighScore = localStorage.getItem('highScore');
+
+    // Si no existe, o si la nueva puntuación es mayor, almacenarla
+    if (storedHighScore === null || score > storedHighScore) {
+        localStorage.setItem('highScore', score);
+        alert('¡Nueva puntuación más alta guardada: ' + score + ' puntos!');
+    }
+}
+
+// Obtener la puntuación más alta desde LocalStorage
+function getHighScore() {
+    var highScore = localStorage.getItem('highScore');
+
+    // Si no hay una puntuación almacenada, devolver 0
+    if (highScore === null) {
+        return 0;
+    }
+
+    return parseInt(highScore);
+}
+
+function updateScore() {
+    document.getElementById('scoreBoard').innerText = "Puntuación: " + score;
+
+    // Mostrar la puntuación más alta
+    var highScore = getHighScore();
+    document.getElementById('highScoreBoard').innerText = "Puntuación más alta: " + highScore;
+}
+
+function triggerCrash() {
+    crashed = true;
+    myGameArea.stop();
+
+    // Guardar la puntuación más alta si es necesario
+    saveHighScore(score);
+
+    // Mostrar animación de choque y volver al menú
+    var canvasElement = document.body.getElementsByTagName("canvas")[0];
+    canvasElement.classList.add("crash");
+
+    setTimeout(function() {
+        canvasElement.classList.remove("crash");
+        goToMenu(); // Volver al menú de inicio y mostrar la puntuación
+    }, 500);
+}
+
+window.addEventListener('keydown', function (e) {
+    switch(e.keyCode) {
+        case 37: moveLeftActive = true; break; // Flecha izquierda
+        case 38: moveUpActive = true; break;   // Flecha arriba
+        case 39: moveRightActive = true; break; // Flecha derecha
+        case 40: moveDownActive = true; break;  // Flecha abajo
+    }
+});
+
+window.addEventListener('keyup', function (e) {
+    switch(e.keyCode) {
+        case 37: moveLeftActive = false; break;
+        case 38: moveUpActive = false; break;
+        case 39: moveRightActive = false; break;
+        case 40: moveDownActive = false; break;
+    }
+});
