@@ -3,7 +3,7 @@ var myObstacles = [];
 var crashed = false;
 var score = 0;
 var previousHighScore = 0;  // Puntuación más alta registrada
-var gameSpeed = 20;  // Intervalo inicial del juego (menor es más rápido)
+var gameSpeed = 15;  // Intervalo inicial del juego (menor es más rápido)
 
 function showGame() {
     // Ocultar el menú de inicio y mostrar el juego
@@ -29,7 +29,7 @@ function goToMenu() {
 function startGame() {
     crashed = false;
     score = 0;  // Reiniciar la puntuación
-    gameSpeed = 20;  // Restablecer la velocidad del juego
+    //gameSpeed = 20;   Restablecer la velocidad del juego
     updateScore(); // Mostrar la puntuación inicial
     myGamePiece = new component(30, 30, "white", 10, 120);
     myObstacles = [];
@@ -276,6 +276,17 @@ function triggerCrash() {
         canvasElement.classList.remove("crash");
         goToMenu(); // Volver al menú de inicio y mostrar la puntuación
     }, 500);
+}
+
+function setDifficulty(level) {
+    if (level === 'easy') {
+        gameSpeed = 20;  // Velocidad más lenta para el modo fácil
+    } else if (level === 'normal') {
+        gameSpeed = 15;  // Velocidad normal
+    } else if (level === 'hard') {
+        gameSpeed = 10;  // Velocidad más rápida para el modo difícil
+    }
+    document.getElementById('scoreMessage').innerText = "Dificultad seleccionada: " + level.charAt(0).toUpperCase() + level.slice(1);
 }
 
 window.addEventListener('keydown', function (e) {
