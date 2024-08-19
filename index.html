@@ -13,14 +13,17 @@
         <p id="scoreMessage"></p>
         <button onclick="showGame()">Iniciar Juego</button>
     </div>
+
 </div>
 
 <div id="gameContainer">
-    <div id="scoreBoard">Puntuación: 0</div><br>
-    <button id="moveUp" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()" ontouchend="clearmove()">⬆️</button><br>
-    <button id="moveLeft" onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()" ontouchend="clearmove()">⬅️</button>
-    <button id="moveRight" onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()" ontouchend="clearmove()">➡️</button><br>
-    <button id="moveDown" onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()" ontouchend="clearmove()">⬇️</button>
+    <div id="scoreBoard">Puntuación: 0</div>
+    <div id="highScoreBoard">Puntuación más alta: 0</div>
+    <br>
+    <button id="moveUp" onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()" ontouchend="clearmove()"></button><br>
+    <button id="moveLeft" onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()" ontouchend="clearmove()"></button>
+    <button id="moveRight" onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()" ontouchend="clearmove()"></button><br>
+    <button id="moveDown" onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()" ontouchend="clearmove()"></button>
 </div>
 
 <script src="script.js"></script>
